@@ -1,0 +1,75 @@
+<h1>Add food</h1>
+<%- include ('./partials/messages') %>
+<form action="/add-food" method="POST">
+  <div>
+    <label for="name">Food name:</label>
+    <input name="name" placeholder="Enter food name" />
+  </div>
+  <div>
+    <label for="calories">Calories:</label>
+    <input name="calories" placeholder="Enter calories (in g)" />
+  </div>
+  <div>
+    <label for="saturated">Saturated fat:</label>
+    <input name="saturated" placeholder="Enter saturated fat (in g)" />
+  </div>
+  <div>
+    <label for="polyunsaturated">Polyunsaturated fat:</label>
+    <input name="polyunsaturated" placeholder="Enter polyunsaturated fat (in g)" />
+  </div>
+  <div>
+    <label for="monounsaturated">Monounsaturated fat:</label>
+    <input name="monounsaturated" placeholder="Enter monounsaturated fat (in g)" />
+  </div>
+  <div>
+    <label for="trans">Trans fat:</label>
+    <input name="trans" placeholder="Enter trans fat (in g)" />
+  </div>
+  <div>
+    <label for="cholesterol">Cholesterol:</label>
+    <input name="cholesterol" placeholder="Enter cholesterol (in mg)" />
+  </div>
+  <div>
+    <label for="sodium">Sodium:</label>
+    <input name="sodium" placeholder="Enter sodium (in mg)" />
+  </div>
+  <div>
+    <label for="potassium">Potassium:</label>
+    <input name="potassium" placeholder="Enter potassium (in mg)" />
+  </div>
+  <div>
+    <label for="total_carbs">Total carbs:</label>
+    <input name="total_carbs" placeholder="Enter total carbs (in g)" />
+  </div>
+  <div>
+    <label for="dietary_fiber">Dietary fiber:</label>
+    <input name="dietary_fiber" placeholder="Enter dietary fiber (in g)" />
+  </div>
+  <div>
+    <label for="sugars">Sugars:</label>
+    <input name="sugars" placeholder="Enter sugars (in g)" />
+  </div>
+  <div>
+    <label for="protein">Protein:</label>
+    <input name="protein" placeholder="Enter protein (in g)" />
+  </div>
+  <div>
+    <label for="vitamin_a">Vitamin A:</label>
+    <input name="vitamin_a" placeholder="Enter Vitamin A (in % daily)" />
+  </div>
+  <div>
+    <label for="vitamin_c">Vitamin C:</label>
+    <input name="vitamin_c" placeholder="Enter Vitamin C (in % daily)" />
+  </div>
+  <div>
+    <label for="calcium">Calcium:</label>
+    <input name="calcium" placeholder="Enter calcium (in % daily)" />
+  </div>
+  <div>
+    <label for="iron">Iron:</label>
+    <input name="iron" placeholder="Enter iron(in % daily)" />
+  </div>
+
+
+  <button type="submit" class="btn btn-primary btn-block">Add food</button>
+</form>
