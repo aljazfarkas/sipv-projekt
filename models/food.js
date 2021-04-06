@@ -4,11 +4,15 @@ const FoodSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  //v  g
+  //v g  
+  weight: {
+      type: Number
+  },
+  //v g
   calories: {
     type: Number
   },
-  //v  g
+  //v g
   total_fat: {
     saturated: { type: Number },
     polyunsaturated: { type: Number },

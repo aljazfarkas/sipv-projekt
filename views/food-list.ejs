@@ -1,0 +1,11 @@
+<a href="/dashboard">Back to dashboard</a>
+
+<h2>Food list</h2>
+
+<ul>
+<% foods.forEach(function(food){ %>
+    <li>
+        <a href="<%= food.name %>-<%= food.weight %>"><%= food.name %> - <%= food.weight %> g</p>
+    </li>
+<% }); %>
+</ul>

@@ -9,12 +9,13 @@ const mongoose = require('mongoose')
 const expressEjsLayout = require('express-ejs-layouts')
 const session = require('express-session')
 const flash = require('connect-flash')
-const passport = require('passport');
-require("./config/passport")(passport)
+const passport = require('passport')
+require('./config/passport')(passport)
 require('dotenv').config()
 
 var indexRouter = require('./routes/index')
 var usersRouter = require('./routes/users')
+var foodRouter = require('./routes/food')
 
 var app = express()
 
@@ -46,8 +47,8 @@ app.use(
     saveUninitialized: true
   })
 )
-app.use(passport.initialize());
-app.use(passport.session());
+app.use(passport.initialize())
+app.use(passport.session())
 //use flash
 app.use(flash())
 app.use((req, res, next) => {
@@ -59,6 +60,7 @@ app.use((req, res, next) => {
 
 app.use('/', indexRouter)
 app.use('/users', usersRouter)
+app.use('/food', foodRouter)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
