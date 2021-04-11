@@ -7,7 +7,6 @@ const Food = require('../models/food')
 router.get('/list', (req, res) => {
   Food.find({}, function (err, foods) {
     res.render('food-list', {
-      user: req.user,
       foods: foods
     })
   })
@@ -18,7 +17,6 @@ router.get('/:name-:weight', (req, res) => {
   const { name, weight } = req.params
   Food.findOne({ name: name, weight: weight }, function (err, food) {
     res.render('food-info', {
-      user: req.user,
       food: food
     })
   })
@@ -26,9 +24,7 @@ router.get('/:name-:weight', (req, res) => {
 
 //adding food to database
 router.get('/add', ensureAuthenticated, (req, res) => {
-  res.render('add-food', {
-    user: req.user
-  })
+  res.render('add-food')
 })
 
 router.post('/add', (req, res) => {

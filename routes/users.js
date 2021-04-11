@@ -6,14 +6,10 @@ const User = require('../models/user')
 
 //login handle
 router.get('/login', (req, res) => {
-  res.render('login', {
-    user: req.user
-  })
+  res.render('login')
 })
 router.get('/register', (req, res) => {
-  res.render('register', {
-    user: req.user
-  })
+  res.render('register')
 })
 //Register handle
 router.post('/register', (req, res) => {
@@ -43,7 +39,6 @@ router.post('/register', (req, res) => {
   } else {
     //validation passed
     User.findOne({ email: email }).exec((err, user) => {
-      console.log(user)
       if (user) {
         errors.push({ msg: 'email already registered' })
         res.render('register', {

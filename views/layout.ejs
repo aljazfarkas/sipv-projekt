@@ -15,7 +15,7 @@
     <div class="header clearfix">
       <nav id="reload">
         <ul class="nav nav-pills pull-right">
-          <% if (typeof user != 'undefined' && user.ID) { %>
+          <% if (user) { %>
             <input type="hidden" id="currentuser" value="<%- user.username %>">
             <li role="presentation"><a href="/search">Search <i class="fa fa-search"></i> </a></li>
             <li>
