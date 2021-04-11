@@ -6,10 +6,14 @@ const User = require('../models/user')
 
 //login handle
 router.get('/login', (req, res) => {
-  res.render('login')
+  res.render('login', {
+    user: req.user
+  })
 })
 router.get('/register', (req, res) => {
-  res.render('register')
+  res.render('register', {
+    user: req.user
+  })
 })
 //Register handle
 router.post('/register', (req, res) => {

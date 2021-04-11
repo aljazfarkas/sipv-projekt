@@ -5,12 +5,16 @@ const Food = require('../models/food')
 
 //login page
 router.get('/', (req, res) => {
-  res.render('welcome')
+  res.render('welcome', {
+    user: req.user
+  })
 })
 
 //register page
 router.get('/register', (req, res) => {
-  res.render('register')
+  res.render('register', {
+    user: req.user
+  })
 })
 
 //dashboard
@@ -19,6 +23,5 @@ router.get('/dashboard', ensureAuthenticated, (req, res) => {
     user: req.user
   })
 })
-
 
 module.exports = router
