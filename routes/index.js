@@ -5,7 +5,11 @@ const Food = require('../models/food')
 
 //login page
 router.get('/', (req, res) => {
-  res.render('welcome')
+  if (req.user) {
+    res.redirect('dashboard')
+  } else {
+    res.render('welcome')
+  }
 })
 
 //register page
