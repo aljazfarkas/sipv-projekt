@@ -6,26 +6,49 @@
     <a href="/users/food-diary-list">Food diary list</a>
 
     <canvas id="weightChart"></canvas>
+    
     <script>
+         //Chart.defaults.global = { defaultFontColor: 'dodgerblue'};
         var weightList = '<%- JSON.stringify(weightList) %>';
         console.log(weightList)
         var ctx = document.getElementById('weightChart').getContext('2d');
         var weightChart = new Chart(ctx, {
             type: 'line',
             options: {
+                legend: {
+                 
+                        fontColor: "white",
+                    
+                
+                },
                 scales: {
                     x: {
                         ticks: {
-                            source: 'data'
+                            source: 'data',
+                            color: "white"
+                        },
+                        grid: {
+                            color: 'white',
                         }
                     },
+
                     y: {
-                        beginAtZero: false
+                        beginAtZero: false,
+
+                        grid: {
+                            color: 'white',
+
+                        },
+                        ticks: {
+                            color: "white"
+                        },
                     }
+
                 },
                 parsing: {
                     xAxisKey: 'date',
                     yAxisKey: 'weight'
+
                 }
             },
             data: {
@@ -33,7 +56,9 @@
                     label: 'Weight',
                     data: JSON.parse(weightList),
                     borderColor: 'rgb(75, 192, 192)',
-                    tension: 0.5
+                    tension: 0.5,
+                    tickColor: '#fff',
+                    fontColor: "white"
                 }]
             }
         });
