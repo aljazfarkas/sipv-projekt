@@ -16,6 +16,7 @@ require('dotenv').config()
 var indexRouter = require('./routes/index')
 var usersRouter = require('./routes/users')
 var foodRouter = require('./routes/food')
+var weightRouter = require('./routes/weight')
 
 var app = express()
 
@@ -63,6 +64,7 @@ app.use((req, res, next) => {
 app.use('/', indexRouter)
 app.use('/users', usersRouter)
 app.use('/food', foodRouter)
+app.use('/weight', weightRouter)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

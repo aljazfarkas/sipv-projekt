@@ -1,0 +1,9 @@
+<h1>Add weight</h1>
+<%- include ('./partials/messages') %>
+    <form action="/weight/add" method="POST">
+        <div>
+            <label for="weight">Weight:</label>
+            <input name="weight" placeholder="Enter weight (in kg)"/>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Add weight</button>
+    </form>
