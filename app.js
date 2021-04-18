@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser')
 var lessMiddleware = require('less-middleware')
 var logger = require('morgan')
 var cors = require('cors')
+var moment = require('moment');
 const mongoose = require('mongoose')
 const expressEjsLayout = require('express-ejs-layouts')
 const session = require('express-session')
