@@ -1,4 +1,6 @@
 const mongoose = require('mongoose')
+const FoodDiaryEntry = require('./food_diary_entry')
+
 const UserSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -15,7 +17,13 @@ const UserSchema = new mongoose.Schema({
   date: {
     type: Date,
     default: Date.now
-  }
+  },
+  food_diary: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: FoodDiaryEntry
+    }
+  ]
 })
 const User = mongoose.model('User', UserSchema)
 
