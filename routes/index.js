@@ -1,7 +1,7 @@
 var express = require('express')
 var router = express.Router()
 const { ensureAuthenticated } = require('../config/auth.js')
-const Food = require('../models/food')
+const Weight = require('../models/weight')
 
 //login page
 router.get('/', (req, res) => {
@@ -19,7 +19,15 @@ router.get('/register', (req, res) => {
 
 //dashboard
 router.get('/dashboard', ensureAuthenticated, (req, res) => {
-  res.render('dashboard')
+  Weight.find({user: req.user.id})
+  .then((weightList) => {
+    weightList = weightList.map((weight) => {
+      let date = new Date(weight.date);
+      weight.formattedDate = date.getDate();
+      return weight;
+    })
+    res.render('dashboard', {weightList})
+  })
 })
 
 module.exports = router

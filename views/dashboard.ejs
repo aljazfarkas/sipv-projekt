@@ -1,9 +1,41 @@
-<p class="lead mb-3">Welcome <%= user.name %></p>
+<p class="lead mb-3">Welcome <%= user.name %>
+</p>
 <%- include ('./partials/messages'); %>
-<a href="/food/add">Add food</a>
-<a href="/food/list">Food list</a>
-<a href="/weight/add">Add weight</a>
-<a href="/users/logout" class="btn btn-secondary">Logout</a>
-<a href="/users/food-diary">Add to food diary</a>
-
-
+    <a href="/food/add">Add food</a>
+    <a href="/food/list">Food list</a>
+    <a href="/weight/add">Add weight</a>
+    <a href="/users/logout" class="btn btn-secondary">Logout</a>
+    <a href="/users/food-diary">Add to food diary</a>
+    <canvas id="weightChart"></canvas>
+    <script>
+        var weightList = '<%- JSON.stringify(weightList) %>';
+        console.log(weightList)
+        var ctx = document.getElementById('weightChart').getContext('2d');
+        var weightChart = new Chart(ctx, {
+            type: 'line',
+            options: {
+                scales: {
+                    x: {
+                        ticks: {
+                            source: 'data'
+                        }
+                    },
+                    y: {
+                        beginAtZero: false
+                    }
+                },
+                parsing: {
+                    xAxisKey: 'date',
+                    yAxisKey: 'weight'
+                }
+            },
+            data: {
+                datasets: [{
+                    label: 'Weight',
+                    data: JSON.parse(weightList),
+                    borderColor: 'rgb(75, 192, 192)',
+                    tension: 0.5
+                }]
+            }
+        });
+    </script>
