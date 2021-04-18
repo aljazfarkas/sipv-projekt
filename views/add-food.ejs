@@ -1,80 +1,79 @@
 <a href="/dashboard">Back to dashboard</a>
 <h1>Add food</h1>
 <%- include ('./partials/messages') %>
-<form action="/food/add" method="POST">
-  <div>
+<form action="/food/add" method="POST" class="form-inline" role="form">
+  <div class="form-group">
     <label for="name">Food name:</label>
-    <input name="name" placeholder="Enter food name" />
+    <input name="name" class="form-control-sm" placeholder="Enter food name" />
   </div>
-  <div>
+  <div class="form-group">
     <label for="weight">Weight:</label>
-    <input name="weight" placeholder="Enter weight (in g)" />
+    <input name="weight" class="form-control-sm" placeholder="Enter weight (in g)" />
   </div>
-  <div>
+  <div class="form-group">
     <label for="calories">Calories:</label>
-    <input name="calories" placeholder="Enter calories (in kcal)" />
+    <input name="calories" class="form-control-sm" placeholder="Enter calories (in kcal)" />
   </div>
-  <div>
+  <div class="form-group">
     <label for="saturated">Saturated fat:</label>
-    <input name="saturated" placeholder="Enter saturated fat (in g)" />
+    <input name="saturated" class="form-control-sm" placeholder="Enter saturated fat (in g)" />
   </div>
-  <div>
+  <div class="form-group">
     <label for="polyunsaturated">Polyunsaturated fat:</label>
-    <input name="polyunsaturated" placeholder="Enter polyunsaturated fat (in g)" />
+    <input name="polyunsaturated" class="form-control-sm" placeholder="Enter polyunsaturated fat (in g)" />
   </div>
-  <div>
+  <div class="form-group">
     <label for="monounsaturated">Monounsaturated fat:</label>
-    <input name="monounsaturated" placeholder="Enter monounsaturated fat (in g)" />
+    <input name="monounsaturated" class="form-control-sm" placeholder="Enter monounsaturated fat (in g)" />
   </div>
-  <div>
+  <div class="form-group">
     <label for="trans">Trans fat:</label>
-    <input name="trans" placeholder="Enter trans fat (in g)" />
+    <input name="trans" class="form-control-sm" placeholder="Enter trans fat (in g)" />
   </div>
-  <div>
+  <div class="form-group">
     <label for="cholesterol">Cholesterol:</label>
-    <input name="cholesterol" placeholder="Enter cholesterol (in mg)" />
+    <input name="cholesterol" class="form-control-sm" placeholder="Enter cholesterol (in mg)" />
   </div>
-  <div>
+  <div class="form-group">
     <label for="sodium">Sodium:</label>
-    <input name="sodium" placeholder="Enter sodium (in mg)" />
+    <input name="sodium" class="form-control-sm" placeholder="Enter sodium (in mg)" />
   </div>
-  <div>
+  <div class="form-group">
     <label for="potassium">Potassium:</label>
-    <input name="potassium" placeholder="Enter potassium (in mg)" />
+    <input name="potassium" class="form-control-sm" placeholder="Enter potassium (in mg)" />
   </div>
-  <div>
+  <div class="form-group">
     <label for="total_carbs">Total carbs:</label>
-    <input name="total_carbs" placeholder="Enter total carbs (in g)" />
+    <input name="total_carbs" class="form-control-sm" placeholder="Enter total carbs (in g)" />
   </div>
-  <div>
+  <div class="form-group">
     <label for="dietary_fiber">Dietary fiber:</label>
-    <input name="dietary_fiber" placeholder="Enter dietary fiber (in g)" />
+    <input name="dietary_fiber" class="form-control-sm" placeholder="Enter dietary fiber (in g)" />
   </div>
-  <div>
+  <div class="form-group">
     <label for="sugars">Sugars:</label>
-    <input name="sugars" placeholder="Enter sugars (in g)" />
+    <input name="sugars" class="form-control-sm" placeholder="Enter sugars (in g)" />
   </div>
-  <div>
+  <div class="form-group">
     <label for="protein">Protein:</label>
-    <input name="protein" placeholder="Enter protein (in g)" />
+    <input name="protein" class="form-control-sm" placeholder="Enter protein (in g)" />
   </div>
-  <div>
+  <div class="form-group">
     <label for="vitamin_a">Vitamin A:</label>
-    <input name="vitamin_a" placeholder="Enter Vitamin A (in % daily)" />
+    <input name="vitamin_a" class="form-control-sm" placeholder="Enter Vitamin A (in % daily)" />
   </div>
-  <div>
+  <div class="form-group">
     <label for="vitamin_c">Vitamin C:</label>
-    <input name="vitamin_c" placeholder="Enter Vitamin C (in % daily)" />
+    <input name="vitamin_c" class="form-control-sm" placeholder="Enter Vitamin C (in % daily)" />
   </div>
-  <div>
+  <div class="form-group">
     <label for="calcium">Calcium:</label>
-    <input name="calcium" placeholder="Enter calcium (in % daily)" />
+    <input name="calcium" class="form-control-sm" placeholder="Enter calcium (in % daily)" />
   </div>
-  <div>
+  <div class="form-group">
     <label for="iron">Iron:</label>
-    <input name="iron" placeholder="Enter iron(in % daily)" />
+    <input name="iron" class="form-control-sm" placeholder="Enter iron(in % daily)" />
   </div>
-
 
   <button type="submit" class="btn btn-primary btn-block">Add food</button>
 </form>

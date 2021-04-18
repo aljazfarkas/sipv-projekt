@@ -1,59 +1,57 @@
 <%- include ('./partials/messages'); %>
-<a href="/food/add">Add food</a>
-<a href="/food/list">Food list</a>
-<a href="/weight/add">Add weight</a>
-<a href="/users/food-diary-entry">Add to food diary</a>
-<a href="/users/food-diary-list">Food diary list</a>
+    <a href="/food/add">Add food</a>
+    <a href="/food/list">Food list</a>
+    <a href="/weight/add">Add weight</a>
+    <a href="/users/food-diary-entry">Add to food diary</a>
+    <a href="/users/food-diary-list">Food diary list</a>
 
-<canvas id="weightChart"></canvas>
+    <canvas id="weightChart"></canvas>
 
-<script>
-  //Chart.defaults.global = { defaultFontColor: 'dodgerblue'};
-  var weightList = '<%- JSON.stringify(weightList) %>'
-  console.log(weightList)
-  Chart.defaults.color = "#ededed"
-  var ctx = document.getElementById('weightChart').getContext('2d')
-  var weightChart = new Chart(ctx, {
-    type: 'line',
-    options: {
-      scales: {
-        x: {
-          ticks: {
-            source: 'data',
-            color: 'white'
-          },
-          grid: {
-            color: 'white'
-          }
-        },
+    <script>
+        //Chart.defaults.global = { defaultFontColor: 'dodgerblue'};
+        var weightList = '<%- JSON.stringify(weightList) %>'
+        console.log(weightList)
+        Chart.defaults.color = "#ededed"
+        var ctx = document.getElementById('weightChart').getContext('2d')
+        var weightChart = new Chart(ctx, {
+            type: 'line',
+            options: {
+                scales: {
+                    x: {
+                        ticks: {
+                            source: 'data',
+                            color: '#ededed'
+                        },
+                        grid: {
+                            color: '#ededed'
+                        }
+                    },
 
-        y: {
-          beginAtZero: false,
+                    y: {
+                        beginAtZero: false,
 
-          grid: {
-            color: 'white'
-          },
-          ticks: {
-            color: 'white'
-          }
-        }
-      },
-      parsing: {
-        xAxisKey: 'date',
-        yAxisKey: 'weight'
-      }
-    },
-    data: {
-      datasets: [
-        {
-          label: 'Weight',
-          data: JSON.parse(weightList),
-          borderColor: 'rgb(75, 192, 192)',
-          tension: 0.5,
-          tickColor: '#fff',
-          fontColor: 'white'
-        }
-      ]
-    }
-  })
-</script>
+                        grid: {
+                            color: '#ededed'
+                        },
+                        ticks: {
+                            color: '#ededed'
+                        }
+                    }
+                },
+                parsing: {
+                    xAxisKey: 'date',
+                    yAxisKey: 'weight'
+                }
+            },
+            data: {
+                datasets: [
+                    {
+                        label: 'Weight (kg)',
+                        data: JSON.parse(weightList),
+                        borderColor: 'rgb(75, 192, 192)',
+                        tension: 0.5,
+                    }
+                ]
+            }
+        })
+    </script>
