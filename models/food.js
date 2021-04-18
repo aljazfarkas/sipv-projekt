@@ -8,7 +8,7 @@ const FoodSchema = new mongoose.Schema({
   weight: {
       type: Number
   },
-  //v g
+  //v kcal
   calories: {
     type: Number
   },

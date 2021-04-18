@@ -7,23 +7,58 @@ const Food = require('../models/food')
 const FoodDiaryEntry = require('../models/food_diary_entry')
 const { ensureAuthenticated } = require('../config/auth')
 
-//food diary
-router.get('/food-diary', ensureAuthenticated, (req, res) => {
+//food diary list
+router.get('/food-diary-list', ensureAuthenticated, async function (req, res) {
+  //dodam shranjeni entry k userju
+  var query = { email: req.user.email }
+  var diaryEntries = Array()
+  User.findOne(query, async function (err, user) {
+    for (let i = 0; i < user.food_diary.length; i++) {
+      entry_id = user.food_diary[i]
+      let diary_entry = await FoodDiaryEntry.findOne({ _id: entry_id }).exec()
+      let foodArray = Array()
+      for (let j = 0; j < diary_entry.info.length; j++) {
+        let food_id = diary_entry.info[j].food_id
+        let quantity = diary_entry.info[j].quantity
+        let food = await Food.findOne({ _id: food_id }).exec()
+
+        foodArray.push({ food: food, quantity: quantity })
+      }
+      diaryEntries.push({
+        date: diary_entry.date,
+        foods: foodArray
+      })
+    }
+    var moment = require('moment')
+    res.render('food-diary-list', {
+      date: user.food_diary.date,
+      diary_entries: diaryEntries,
+      moment: moment
+
+    })
+  })
+})
+
+//food diary entry
+router.get('/food-diary-entry', ensureAuthenticated, (req, res) => {
   Food.find({}, function (err, foods) {
-    res.render('food-diary', {
+    res.render('food-diary-entry', {
       foods: foods
     })
   })
 })
 
-router.post('/food-diary', ensureAuthenticated, async function (req, res) {
+router.post('/food-diary-entry', ensureAuthenticated, async function (
+  req,
+  res
+) {
   let { names, quantities } = req.body
   let foodArray = Array()
   if (!Array.isArray(names)) {
     names = [names]
     quantities = [quantities]
   }
-  for (i = 0; i < names.length; i++) {
+  for (let i = 0; i < names.length; i++) {
     if (quantities[i] != 0) {
       let pair = names[i].split('-')
       let name = pair[0]

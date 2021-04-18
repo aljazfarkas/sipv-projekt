@@ -1,0 +1,14 @@
+<a href="/dashboard">Back to dashboard</a>
+
+<h2>Food diary list</h2>
+
+<ul>
+<% diary_entries.forEach(function(entry){ %>
+    <li>
+        <p>Date: <%= moment(entry.date).format('YYYY-MM-DD') %></p>
+        <% entry.foods.forEach(function(food){ %>
+        <a href="<%= food.food.name %>-<%= food.food.weight %>"><%= food.quantity %>x <%= food.food.name %> - <%= food.food.weight %>g</a>
+        <% }) %>
+    </li>
+<% }); %>
+</ul>
