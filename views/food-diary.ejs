@@ -1,0 +1,54 @@
+<script>
+  $(document).ready(function () {
+    //Za odstranjevanje vrstic
+    $('#remove').click(function () {
+      if ($('div.entry').length != 1) {
+        $('div.entry')
+          .last()
+          .remove()
+      }
+    })
+    //Za dodajanje vrstic
+    $('#add').click(function () {
+      var $div = `
+        <div class="entry">
+          <label for="food">Choose food: </label>
+          <select class="operator" name="names" required>
+            <% foods.forEach(food => { %>
+            <option value="<%= food.name %>-<%= food.weight %>">
+              <%= food.name %> <%= food.weight %>g
+            </option>
+            <% }) %>
+          </select>
+          <label for="quantity">Quantity: </label>
+          <input type="number" min="0" value="1" name="quantities" />
+        </div>
+        `
+      //Dodam za zadnjim entryjem
+      $('div.entry')
+        .last()
+        .after($div)
+      //Applyam Select2
+      $('div.entry select')
+        .last()
+        .val([])
+      $('div.entry select')
+        .last()
+        .select2({
+          placeholder: 'Select food'
+        })
+    })
+  })
+</script>
+<div class="food-diary">
+  <h1>Add food</h1>
+  <%- include ('./partials/messages') %>
+  <button class="btn btn-success btn-block" id="add">+</button>
+  <button class="btn btn-danger btn-block" id="remove">-</button>
+  <form action="/users/food-diary" method="POST">
+    <div class="entry"></div>
+    <div>
+      <button type="submit" class="btn btn-primary btn-block">Submit</button>
+    </div>
+  </form>
+</div>

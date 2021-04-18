@@ -3,6 +3,52 @@ const router = express.Router()
 const bcrypt = require('bcrypt')
 const passport = require('passport')
 const User = require('../models/user')
+const Food = require('../models/food')
+const FoodDiaryEntry = require('../models/food_diary_entry')
+const { ensureAuthenticated } = require('../config/auth')
+
+//food diary
+router.get('/food-diary', ensureAuthenticated, (req, res) => {
+  Food.find({}, function (err, foods) {
+    res.render('food-diary', {
+      foods: foods
+    })
+  })
+})
+
+router.post('/food-diary', ensureAuthenticated, async function (req, res) {
+  let { names, quantities } = req.body
+  let foodArray = Array()
+  if (!Array.isArray(names)) {
+    names = [names]
+    quantities = [quantities]
+  }
+  for (i = 0; i < names.length; i++) {
+    if (quantities[i] != 0) {
+      let pair = names[i].split('-')
+      let name = pair[0]
+      let weight = pair[1]
+      //najdemo hrano, ki jo hočemo
+      let food = await Food.findOne({ name: name, weight: weight }).exec()
+      foodArray.push({ food_id: food._id, quantity: quantities[i] })
+    }
+  }
+  const entry = new FoodDiaryEntry({
+    info: foodArray
+  })
+  entry.save().then(value => {
+    //dodam shranjeni entry k userju
+    var query = { email: req.user.email }
+    User.findOneAndUpdate(
+      query,
+      { $push: { food_diary: [value._id] } },
+      function (err, doc) {
+        req.flash('success_msg', 'You have now added a food diary entry!')
+        res.redirect('/dashboard')
+      }
+    )
+  })
+})
 
 //login handle
 router.get('/login', (req, res) => {

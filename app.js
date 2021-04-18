@@ -9,6 +9,7 @@ const mongoose = require('mongoose')
 const expressEjsLayout = require('express-ejs-layouts')
 const session = require('express-session')
 const flash = require('connect-flash')
+const bodyParser = require('body-parser')
 const passport = require('passport')
 require('./config/passport')(passport)
 require('dotenv').config()
@@ -24,7 +25,8 @@ var app = express()
 mongoose
   .connect('mongodb://localhost:27017/sipv', {
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    useFindAndModify: false
   })
   .then(() => console.log('Connected to database...'))
   .catch(err => console.log(err))
@@ -40,6 +42,7 @@ app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(lessMiddleware(path.join(__dirname, 'public')))
 app.use(express.static(path.join(__dirname, 'public')))
+app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cors())
 //express session
 app.use(
