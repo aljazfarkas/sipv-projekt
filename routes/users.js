@@ -170,4 +170,56 @@ router.get('/logout', (req, res) => {
   req.flash('success_msg', 'Now logged out')
   res.redirect('/users/login')
 })
+
+//adding goal weight to database
+router.get('/add-goal-weight', ensureAuthenticated, (req, res) => {
+  res.render('add-weight', {action: '/users/add-goal-weight'})
+})
+
+router.post('/add-goal-weight', ensureAuthenticated, (req, res) => {
+  const {
+      weight
+  } = req.body
+  console.log(req.user)
+  const newGoalWeight =  User.findOne({ _id: req.user._id }).exec((err, user) => {
+    console.log(err)
+    console.log(user)
+    if (user) {
+        user.goalWeight = weight;
+    user.save()
+      .then(value => {
+          console.log(value)
+          req.flash('success_msg', 'You have now added new goal weight entry!')
+          res.redirect('/dashboard')
+      })
+      .catch(value => console.log(value))
+    }
+  })
+})
+
+//adding goal calories to database
+router.get('/add-goal-calories', ensureAuthenticated, (req, res) => {
+  res.render('add-goal-calories', {action: '/users/add-goal-calories'})
+})
+
+
+router.post('/add-goal-calories', ensureAuthenticated, (req, res) => {
+  const {
+      calories
+  } = req.body
+  console.log(req.user)
+  const goalCalories =  User.findOne({ _id: req.user._id }).exec((err, user) => {
+    if (user) {
+        user.goalCalories = calories;
+    user.save()
+      .then(value => {
+          console.log(value)
+          req.flash('success_msg', 'You have now added new goal calories entry!')
+          res.redirect('/dashboard')
+      })
+      .catch(value => console.log(value))
+    }
+  })
+})
+
 module.exports = router

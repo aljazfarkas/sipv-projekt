@@ -16,20 +16,22 @@
 </head>
 
 <body>
+  <div class = "navigation">
     <div class="header clearfix">
       <nav id="reload">
         <% if (user) { %> 
-        <ui class="nav nav-pills pull-left">
-          <li><p class="lead mb-3">Welcome <%= user.name %></p></li>
-        </ui>
+        <ul class="nav nav-pills pull-left">
+          <li><p class="navigation-left">Welcome <%= user.name %></p></li>
+        </ul>
         <ul class="nav nav-pills pull-right">
           
-            <input type="hidden" id="currentuser" value="<%- user.username %>">
-            <li role="presentation"><a href="/search">Search <i class="fa fa-search"></i> </a></li>
+            <input class="navigation-right" type="hidden" id="currentuser" value="<%- user.username %>">
+            <li class="navigation-right" role="presentation"><a href="/search">Search <i class="fa fa-search"></i> </a></li>
             <li>
               
               <div class="dropdown">
-                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><i class="fa
+                <!---->
+                <button class="btn btn-primary dropdown-toggle navigation-right" type="button" data-toggle="dropdown"><i class="fa
                     fa-user-plus"></i>
                   <span class="caret"></span></button>
                 <ul class="dropdown-menu" style="width: 300px">
@@ -48,13 +50,13 @@
               </div>
 
             </li>
-            <li role="presentation"><a href="/users/logout" class="btn btn-secondary">Logout</a></li>
+            <li role="presentation"><a href="/users/logout" class="btn btn-secondary navigation-right">Logout</a></li>
               
         </ul>
         <% } %>
       </nav>
     </div>
-
+  </div>
 <!--
    <div class="row">
       <div class="col-lg-12">

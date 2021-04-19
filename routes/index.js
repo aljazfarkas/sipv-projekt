@@ -21,12 +21,13 @@ router.get('/register', (req, res) => {
 router.get('/dashboard', ensureAuthenticated, (req, res) => {
   Weight.find({user: req.user.id})
   .then((weightList) => {
+    let weightDifference = weightList[weightList.length - 1].weight - weightList[weightList.length - 2].weight;
     weightList = weightList.map((weight) => {
       let date = new Date(weight.date);
       weight.formattedDate = date.getDate();
       return weight;
     })
-    res.render('dashboard', {weightList})
+    res.render('dashboard', {weightList, weightDifference})
   })
 })
 

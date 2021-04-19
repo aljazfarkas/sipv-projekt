@@ -1,5 +1,4 @@
 body {
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   background-color: #080808;
 }
@@ -15,8 +14,9 @@ h1, h2, a, p, label, pre {
 li {
   //border-bottom: 1px solid lightgray;
   margin: 3px;
-  line-height: 38px;
+  //line-height: 38px;
 }
+
 
 .navbar-nav { 
   flex-direction: row;
@@ -30,6 +30,37 @@ li {
   color: '#FFFFFF' !important;
 }
 
+.navigation {
+  margin-left: 0px;
+  //background-color: #0d6dfd;
+  width: 100%;
+  font-size: 20px;
+}
+
+.navigation-left {
+  text-align: center;
+  margin-top: 10px;
+  margin-left: 10px;
+  padding-top:5px;
+}
+
+.navigation-right {
+  text-align: center;
+  margin-right: 5px;
+}
+
+.btn.btn-secondary {
+  margin-top: 10px;
+}
+
+.fa.fa-search {
+  margin-top: 20px;
+  margin-right: 10px;
+}
+
+.dropdown {
+  margin-top: 10px;
+}
 form {
   width: 100%;
   margin: 0 auto;
@@ -37,9 +68,77 @@ form {
 
 input {
   display: inline-block;
+  width: 220px;
+  margin: 2px;
+}
+
+.add-food-label {
+  width: 10%;
 }
 
 label {
-  width: 10%;
   text-align: left;
+  font-weight: 550;
+}
+
+#dashboard-container {
+  margin-left: 0;
+  display: flex;
+}
+
+#dashboard-row {
+  text-align: center;
+  margin: 0px;
+  font-size: 25px;
+  align-content: left;
+  width: 750px;
+}
+
+a:link {
+  text-decoration: none;
+}
+
+.dashboard-button:hover {
+  color: black;
+}
+
+.dashboard-button {
+  width: 150px;
+  display: inline-block;
+  background-color: #0d6dfd;
+  color: #FFFFFF;
+  padding: 14px 25px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  margin: auto;
+  opacity: 0.9;
+  border-radius: 5px;
+  
+}
+
+.card-title {
+  font-size: 30px;
+  text-align: left;
+  color: white;
+}
+
+.card-text {
+  font-size: 20px;
+  text-align: left;
+  color: white;
+}
+
+.food-diary-element {
+  width: 250px;
+  background-color: #2f3744;
+  margin-left: 0px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  padding: 2px;
+}
+
+.food-diary-list .card-title {
+  font-size: 20px;
+  background-color: #232932;
 }

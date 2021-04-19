@@ -6,7 +6,7 @@ const passport = require('passport')
 
 //adding weight to database
 router.get('/add', ensureAuthenticated, (req, res) => {
-    res.render('add-weight')
+    res.render('add-weight', {action: '/weight/add'})
 })
 
 router.post('/add', ensureAuthenticated, (req, res) => {

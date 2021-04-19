@@ -1,0 +1,11 @@
+<a href="/dashboard">Back to dashboard</a>
+
+<h2>Add daily goal calories</h2>
+<%- include ('./partials/messages') %>
+    <form action="/users/add-goal-calories" method="POST">
+        <div>
+            <label for="calories">Calories:</label>
+            <input name="calories" placeholder="Enter calories (in kcal)"/>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Add calories</button>
+    </form>

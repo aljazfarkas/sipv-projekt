@@ -23,7 +23,15 @@ const UserSchema = new mongoose.Schema({
       type: mongoose.Schema.Types.ObjectId,
       ref: FoodDiaryEntry
     }
-  ]
+  ],
+  goalWeight: {
+    type: Number,
+    required: false
+  },
+  goalCalories: {
+    type: Number,
+    required: false
+  }
 })
 const User = mongoose.model('User', UserSchema)
 

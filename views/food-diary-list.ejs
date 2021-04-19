@@ -2,13 +2,18 @@
 
 <h2>Food diary list</h2>
 
-<ul>
-<% diary_entries.forEach(function(entry){ %>
-    <li>
-        <p>Date: <%= moment(entry.date).format('YYYY-MM-DD') %></p>
-        <% entry.foods.forEach(function(food){ %>
-        <a href="<%= food.food.name %>-<%= food.food.weight %>"><%= food.quantity %>x <%= food.food.name %> - <%= food.food.weight %>g</a>
-        <% }) %>
-    </li>
-<% }); %>
-</ul>
+<div class="card w-50">
+    <div class="card-body food-diary-list">
+        <% diary_entries.forEach(function(entry){ %>
+            <div class="food-diary-element">
+                <h5 class="card-title">Date: <%= moment(entry.date).format('DD/MM/YYYY') %>
+                </h5>
+                <% entry.foods.forEach(function(food){ %>
+                    <p class="card-text"><a href="<%= food.food.name %>-<%= food.food.weight %>">
+                            <%= food.quantity %>x <%= food.food.name %> (<%= food.food.weight %> g)
+                        </a></p>
+            </div>
+            <% }) %>
+                <% }); %>
+    </div>
+</div>
