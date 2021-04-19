@@ -25,7 +25,17 @@ router.get('/dashboard', ensureAuthenticated, (req, res) => {
       let weightDifference = weightList[weightList.length - 1].weight - weightList[weightList.length - 2].weight;
       let newWeightList = [];
       let goalWeightList = [];
+      let minWeight = Number.MAX_SAFE_INTEGER;
+      let maxWeight = 0.0;
       for (let item of weightList) {
+        if (minWeight > item.weight) {
+          minWeight = item.weight;
+        }
+
+        if (maxWeight < item.weight) {
+          maxWeight = item.weight;
+        }
+
         let formattedDate = moment(item.date).format('DD/MM/YYYY');
 
         // Če je na isti datum več vnosov, izračunamo povprečje
@@ -55,7 +65,10 @@ router.get('/dashboard', ensureAuthenticated, (req, res) => {
       let currentWeight = weightList[weightList.length - 1];
       let previousWeight = weightList[weightList.length - 2];
 
-      res.render('dashboard', { weightList: newWeightList, weightDifference, currentWeight, previousWeight, goalWeightList, beginAt: req.user.goalWeight - 5 })
+      let beginAt = (Math.min(minWeight - 5, req.user.goalWeight - 5)).toFixed(2);
+      console.log(beginAt)
+      let endAt = (Math.max(maxWeight + 5, req.user.goalWeight + 5)).toFixed(2);
+      res.render('dashboard', { weightList: newWeightList, weightDifference, currentWeight, previousWeight, goalWeightList, beginAt, endAt })
     })
 })
 

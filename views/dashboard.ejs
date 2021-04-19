@@ -79,7 +79,8 @@
         //Chart.defaults.global = { defaultFontColor: 'dodgerblue'};
         let weightList = '<%- JSON.stringify(weightList) %>';
         let goalWeightList = '<%- JSON.stringify(goalWeightList) %>';
-        let beginAt = '<%- JSON.stringify(beginAt) %>';
+        let beginAt = <% - JSON.stringify(beginAt) %>;
+        let endAt = <% - JSON.stringify(endAt) %>;
         Chart.defaults.color = "#ededed";
         let ctx = document.getElementById('weightChart').getContext('2d');
         let weightChart = new Chart(ctx, {
@@ -97,7 +98,8 @@
                     },
 
                     y: {
-                        min: JSON.parse(beginAt),
+                        min: parseFloat(beginAt),
+                        max: parseFloat(endAt),
                         beginAtZero: false,
                         grid: {
                             color: '#ededed'
