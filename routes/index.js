@@ -2,6 +2,7 @@ var express = require('express')
 var router = express.Router()
 const { ensureAuthenticated } = require('../config/auth.js')
 const Weight = require('../models/weight')
+let moment = require('moment');
 
 //login page
 router.get('/', (req, res) => {
@@ -23,10 +24,17 @@ router.get('/dashboard', ensureAuthenticated, (req, res) => {
   .then((weightList) => {
     let weightDifference = weightList[weightList.length - 1].weight - weightList[weightList.length - 2].weight;
     weightList = weightList.map((weight) => {
-      let date = new Date(weight.date);
-      weight.formattedDate = date.getDate();
-      return weight;
+      
+      let formattedDate = moment(weight.date).format('DD/MM/YYYY');
+      console.log(formattedDate)
+      weight.date = formattedDate;
+      return {
+        weight: weight.weight,
+        date: formattedDate
+      };
     })
+    
+    console.log(weightList)
     res.render('dashboard', {weightList, weightDifference})
   })
 })
