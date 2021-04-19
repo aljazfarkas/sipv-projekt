@@ -24,18 +24,17 @@ router.get('/dashboard', ensureAuthenticated, (req, res) => {
   .then((weightList) => {
     let weightDifference = weightList[weightList.length - 1].weight - weightList[weightList.length - 2].weight;
     weightList = weightList.map((weight) => {
-      
       let formattedDate = moment(weight.date).format('DD/MM/YYYY');
-      console.log(formattedDate)
       weight.date = formattedDate;
       return {
         weight: weight.weight,
         date: formattedDate
       };
     })
-    
-    console.log(weightList)
-    res.render('dashboard', {weightList, weightDifference})
+    let currentWeight = weightList[weightList.length - 1];
+    console.log(currentWeight);
+    let previousWeight = weightList[weightList.length - 2];
+    res.render('dashboard', {weightList, weightDifference, currentWeight, previousWeight})
   })
 })
 

@@ -22,7 +22,8 @@
                         <div class="row" id="dashboard-row">
                             <div class=col>
                                 <h5 class="card-title"> <a href="/users/food-diary-list">Food diary list</a></h5>
-                                <p class="card-text">Your daily calories: current /<a href="/users/add-goal-calories">
+                                <p class="card-text">Your daily calories:
+                                    daily kcal /<a href="/users/add-goal-calories">
                                         <%if (user.goalCalories==null) { %>
                                             <b>goal</b>
                                             <% } else { %>
@@ -46,16 +47,17 @@
                                 <h5 class="card-title"><a href="/users/add-goal-weight">Goal weight</a>
                                     <%= user.goalWeight %> kg
                                 </h5>
-                                <p class="card-text">You are
-                                    <%if (weightDifference> 0) { %>
-                                        <%= weightDifference %>
-                                            kg heavier than last time
-                                            <% } else if (weightDifference < 0) { %>
-                                                <%= weightDifference %>
-                                                    kg lighter than last time
-                                                    <% } else { %>
-                                                        the same weight as last time.
-                                                        <% } %>
+                                <p class="card-text">Current weight is <%= currentWeight.weight %> kg.
+                                        You are
+                                        <%if (weightDifference> 0) { %>
+                                            <%= weightDifference %>
+                                                kg heavier than last time (<%= previousWeight.weight %> kg)
+                                                    <% } else if (weightDifference < 0) { %>
+                                                        <%= weightDifference %>
+                                                            kg lighter than last time (<%= previousWeight.weight %> kg)
+                                                                <% } else { %>
+                                                                    the same weight as last time.
+                                                                    <% } %>
                                 </p>
                             </div>
                             <div class=col>
