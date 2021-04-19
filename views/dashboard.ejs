@@ -77,18 +77,19 @@
 
     <script>
         //Chart.defaults.global = { defaultFontColor: 'dodgerblue'};
-        var weightList = '<%- JSON.stringify(weightList) %>'
-        console.log(weightList)
-        Chart.defaults.color = "#ededed"
-        var ctx = document.getElementById('weightChart').getContext('2d')
-        var weightChart = new Chart(ctx, {
+        let weightList = '<%- JSON.stringify(weightList) %>';
+        let goalWeightList = '<%- JSON.stringify(goalWeightList) %>';
+        let beginAt = '<%- JSON.stringify(beginAt) %>';
+        Chart.defaults.color = "#ededed";
+        let ctx = document.getElementById('weightChart').getContext('2d');
+        let weightChart = new Chart(ctx, {
             type: 'line',
             options: {
                 scales: {
                     x: {
                         ticks: {
                             source: 'data',
-                            color: '#ededed'
+                            color: '#ededed',
                         },
                         grid: {
                             color: '#ededed'
@@ -96,8 +97,8 @@
                     },
 
                     y: {
+                        min: JSON.parse(beginAt),
                         beginAtZero: false,
-
                         grid: {
                             color: '#ededed'
                         },
@@ -118,6 +119,13 @@
                         data: JSON.parse(weightList),
                         borderColor: 'rgb(75, 192, 192)',
                         tension: 0.5,
+                    },
+                    {
+                        label: 'Goal weight (kg)',
+                        data: JSON.parse(goalWeightList),
+                        borderColor: 'rgb(13, 109, 253)',
+                        tension: 0.5,
+                        borderDash: [10, 5]
                     }
                 ]
             }

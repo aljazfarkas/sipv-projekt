@@ -24,6 +24,7 @@ router.get('/dashboard', ensureAuthenticated, (req, res) => {
     .then((weightList) => {
       let weightDifference = weightList[weightList.length - 1].weight - weightList[weightList.length - 2].weight;
       let newWeightList = [];
+      let goalWeightList = [];
       for (let item of weightList) {
         let formattedDate = moment(item.date).format('DD/MM/YYYY');
 
@@ -35,13 +36,18 @@ router.get('/dashboard', ensureAuthenticated, (req, res) => {
           for (let i of existingWeight.list) {
             sum += i;
           }
-          
+
           existingWeight.weight = sum / existingWeight.list.length;
         } else {
           newWeightList.push({
             weight: item.weight,
             date: formattedDate,
             list: [item.weight],
+            goalWeight: req.user.goalWeight
+          })
+          goalWeightList.push({
+            date: formattedDate,
+            weight: req.user.goalWeight
           })
         }
       }
@@ -49,7 +55,7 @@ router.get('/dashboard', ensureAuthenticated, (req, res) => {
       let currentWeight = weightList[weightList.length - 1];
       let previousWeight = weightList[weightList.length - 2];
 
-      res.render('dashboard', { weightList: newWeightList, weightDifference, currentWeight, previousWeight })
+      res.render('dashboard', { weightList: newWeightList, weightDifference, currentWeight, previousWeight, goalWeightList, beginAt: req.user.goalWeight - 5 })
     })
 })
 
