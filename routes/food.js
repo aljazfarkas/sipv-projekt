@@ -80,7 +80,7 @@ router.post('/add', (req, res) => {
         .save()
         .then(value => {
           console.log(value)
-          req.flash('success_msg', 'You now added new food!')
+          req.flash('success_msg', 'You have now added new food!')
           res.redirect('/dashboard')
         })
         .catch(value => console.log(value))

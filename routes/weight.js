@@ -21,7 +21,7 @@ router.post('/add', ensureAuthenticated, (req, res) => {
         .save()
         .then(value => {
             console.log(value)
-            req.flash('success_msg', 'You now added new weight entry!')
+            req.flash('success_msg', 'You have now added new weight entry!')
             res.redirect('/dashboard')
         })
         .catch(value => console.log(value))
