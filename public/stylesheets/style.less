@@ -17,6 +17,17 @@ li {
   //line-height: 38px;
 }
 
+.navigation  {
+  height: 60px;
+}
+
+.header.clearfix {
+  position: fixed;
+  top: 0; 
+  width: 100%;
+  z-index: 1;
+  background-color: #080808;
+}
 
 .navbar-nav { 
   flex-direction: row;
@@ -83,14 +94,24 @@ label {
 
 #dashboard-container {
   display: flex;
+  margin-left: 115px;
 }
 
-#dashboard-row {
+.dashboard-row {
   text-align: center;
   margin: 0 auto;
   font-size: 25px;
   align-content: left;
   width: 850px;
+}
+
+.weight-chart {
+  padding-right: 120px;
+}
+
+a.navigation-left {
+  display: block;
+  margin-top: 9px;
 }
 
 a:link {
