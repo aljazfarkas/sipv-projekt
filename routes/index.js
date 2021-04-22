@@ -22,7 +22,13 @@ router.get('/register', (req, res) => {
 router.get('/dashboard', ensureAuthenticated, (req, res) => {
   Weight.find({ user: req.user.id })
     .then((weightList) => {
-      let weightDifference = weightList[weightList.length - 1].weight - weightList[weightList.length - 2].weight;
+      let weightDifference  = 0, currentWeight = 0, previousWeight = 0;
+      if (weightList.length >= 2) {
+        weightDifference = weightList[weightList.length - 1].weight - weightList[weightList.length - 2].weight;
+        currentWeight = weightList[weightList.length - 1];
+        previousWeight = weightList[weightList.length - 2];
+      }
+
       let newWeightList = [];
       let goalWeightList = [];
       let minWeight = Number.MAX_SAFE_INTEGER;
@@ -61,9 +67,6 @@ router.get('/dashboard', ensureAuthenticated, (req, res) => {
           })
         }
       }
-
-      let currentWeight = weightList[weightList.length - 1];
-      let previousWeight = weightList[weightList.length - 2];
 
       let beginAt = (Math.min(minWeight - 5, req.user.goalWeight - 5)).toFixed(2);
       console.log(beginAt)
