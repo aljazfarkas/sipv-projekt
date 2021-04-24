@@ -83,8 +83,9 @@
                 <h5 class="card-title">
                     <%= recipe.name %>
                         <%= moment(recipe.date).format('DD/MM/YYYY') %>
-
-                            <a href="#" class="delete-button" id="<%= recipe._id %>">Delete</a>
+                            <%if (recipe.user===user) {%>
+                                <a href="#" class="delete-button" id="<%= recipe._id %>">Delete</a>
+                                <% } %>
                 </h5>
                 <p class="card-text">
                     <%= recipe.description %> <br>Tags: <%= recipe.tag %>
@@ -99,20 +100,13 @@
         //Za odstranjevanje vrstic
         $('.delete-button').click(function (event) {
             event.preventDefault();
-            console.log($(this).attr('id'))
-
             $.ajax({
                 url: '/recipes/' + $(this).attr('id'),
                 type: 'DELETE',
                 complete: function (result) {
-                    console.log(result)
                     window.location.reload(true)
                 }
             });
         })
     })
-
-function refresh() {
-    loaction.reload(true);
-}
 </script>

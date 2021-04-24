@@ -13,7 +13,7 @@ router.get('/:dietCategory', ensureAuthenticated, async (req, res) => {
 
     const recipesList = await Recipe.find({ category: dietCategory });
    
-    res.render('recipes', { dietCategory, recipesList, moment });
+    res.render('recipes', { dietCategory, recipesList, moment,  user: req.user.id });
 })
 
 router.post('/add', ensureAuthenticated, async (req, res) => {
