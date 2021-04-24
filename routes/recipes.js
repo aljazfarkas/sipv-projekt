@@ -35,4 +35,10 @@ router.post('/add', ensureAuthenticated, async (req, res) => {
     res.redirect(`/recipes/${dietCategory}`);
 })
 
+router.delete('/:id', ensureAuthenticated, async (req, res) => {
+    const { id } = req.params;
+    await Recipe.deleteOne({ _id: id });
+    res.send({});
+})
+
 module.exports = router
