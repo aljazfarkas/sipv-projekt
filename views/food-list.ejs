@@ -11,7 +11,7 @@
 <ul>
 <% foods.forEach(function(food){ %>
     <li>
-        <a href="<%= food.name %>-<%= food.weight %>"><%= food.name %> - <%= food.weight %> g</a>
+        <a href="/food/<%= food._id %>"><%= food.name %> - <%= food.weight %> g</a>
     </li>
 <% }); %>
 </ul>

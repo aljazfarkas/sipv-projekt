@@ -34,7 +34,7 @@ const grouped_dates = _.groupBy(diary_entries, function(entry){
                             meal['foods'].forEach(info => {
                                 total_day_calories += info.food.calories
                                 %>
-                                <p><a href="/food/<%= info.food.name %>-<%= info.food.weight %>">
+                                <p><a href="/food/<%= info.food._id %>">
                                     <%= info.quantity %>x <%= info.food.name %> (<%= info.food.weight %> g)
                                 </a></p>
                                 <% 
@@ -49,7 +49,7 @@ const grouped_dates = _.groupBy(diary_entries, function(entry){
                             meal['foods'].forEach(info => {
                                 total_day_calories += info.food.calories
                                 %>
-                                <p><a href="/food/<%= info.food.name %>-<%= info.food.weight %>">
+                                <p><a href="/food/<%= info.food._id %>">
                                     <%= info.quantity %>x <%= info.food.name %> (<%= info.food.weight %> g)
                                 </a></p>
                                 <% 
@@ -64,7 +64,7 @@ const grouped_dates = _.groupBy(diary_entries, function(entry){
                             meal['foods'].forEach(info => {
                                 total_day_calories += info.food.calories
                                 %>
-                                <p><a href="/food/<%= info.food.name %>-<%= info.food.weight %>">
+                                <p><a href="/food/<%= info.food._id %>">
                                     <%= info.quantity %>x <%= info.food.name %> (<%= info.food.weight %> g)
                                 </a></p>
                                 <% 
@@ -79,7 +79,7 @@ const grouped_dates = _.groupBy(diary_entries, function(entry){
                             meal['foods'].forEach(info => {
                                 total_day_calories += info.food.calories    
                                 %>
-                                <p><a href="/food/<%= info.food.name %>-<%= info.food.weight %>">
+                                <p><a href="/food/<%= info.food._id %>">
                                     <%= info.quantity %>x <%= info.food.name %> (<%= info.food.weight %> g)
                                 </a></p>
                                 <% 

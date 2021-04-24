@@ -58,11 +58,8 @@ router.post('/add', ensureAuthenticated, async function (req, res) {
   }
   for (let i = 0; i < names.length; i++) {
     if (quantities[i] != 0) {
-      let pair = names[i].split('-')
-      let name = pair[0]
-      let weight = pair[1]
       //najdemo hrano, ki jo hočemo
-      let food = await Food.findOne({ name: name, weight: weight }).exec()
+      let food = await Food.findOne({ _id: names[i] }).exec()
       foodArray.push({ food_id: food._id, quantity: quantities[i] })
     }
   }

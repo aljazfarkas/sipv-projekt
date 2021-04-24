@@ -15,7 +15,7 @@
           <label for="food">Choose food: </label>
           <select class="operator" name="names" required>
             <% foods.forEach(food => { %>
-            <option value="<%= food.name %>-<%= food.weight %>">
+            <option value="<%= food._id %>">
               <%= food.name %> <%= food.weight %>g
             </option>
             <% }) %>

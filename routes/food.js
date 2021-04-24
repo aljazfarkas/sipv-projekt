@@ -12,22 +12,23 @@ router.get('/list', (req, res) => {
   })
 })
 
+//adding food to database
+router.get('/add', ensureAuthenticated, (req, res) => {
+  res.render('add-food')
+})
+
 //particular food
-router.get('/:name-:weight', (req, res) => {
-  const { name, weight } = req.params
-  Food.findOne({ name: name, weight: weight }, function (err, food) {
+router.get('/:id', (req, res) => {
+  const { id } = req.params
+  Food.findOne({ _id: id }, function (err, food) {
     res.render('food-info', {
       food: food
     })
   })
 })
 
-//adding food to database
-router.get('/add', ensureAuthenticated, (req, res) => {
-  res.render('add-food')
-})
 
-router.post('/add', (req, res) => {
+router.post('/add', ensureAuthenticated, (req, res) => {
   const {
     name,
     weight,
@@ -48,8 +49,7 @@ router.post('/add', (req, res) => {
     calcium,
     iron
   } = req.body
-  Food.findOne({ name: name, weight: weight }).exec((err, food) => {
-    console.log(food)
+  Food.findOne({ name: name, weight: weight, calories: calories }).exec((err, food) => {
     if (food) {
       req.flash('success_msg', 'Food not added (already added by someone else)')
       res.redirect('/dashboard')
