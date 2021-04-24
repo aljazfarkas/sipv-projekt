@@ -1,22 +1,37 @@
 var express = require('express')
 var router = express.Router()
 const { ensureAuthenticated } = require('../config/auth.js')
+const Recipe = require('../models/recipe')
+let moment = require('moment')
 
 router.get('/', ensureAuthenticated, (req, res) => {
     res.render('diets');
 })
 
-router.get('/:dietCategory', ensureAuthenticated, (req, res) => {
+router.get('/:dietCategory', ensureAuthenticated, async (req, res) => {
     const { dietCategory } = req.params;
-    res.render('recipes', { dietCategory });
+
+    const recipesList = await Recipe.find({ category: dietCategory });
+   
+    res.render('recipes', { dietCategory, recipesList, moment });
 })
 
-router.post('/add', ensureAuthenticated, (req, res) => {
+router.post('/add', ensureAuthenticated, async (req, res) => {
     let { dietCategory, recipeName, recipeDescription, recipeTag } = req.body;
     if (recipeTag && !Array.isArray(recipeTag)) {
         recipeTag = [recipeTag];
     }
-    console.log(dietCategory, recipeName, recipeDescription, recipeTag)
+
+    const newRecipe = new Recipe({
+        user: req.user.id,
+        name: recipeName,
+        description: recipeDescription,
+        tag: recipeTag,
+        category: dietCategory
+    })
+
+    const recipe = await newRecipe.save();
+    console.log(recipe)
     res.redirect(`/recipes/${dietCategory}`);
 })
 

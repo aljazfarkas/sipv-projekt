@@ -72,3 +72,19 @@
     </div>
     <button type="submit" class="btn btn-primary btn-block">Add recipe</button>
 </form>
+
+
+<h2>Recipes list</h2>
+
+<div class="card w-50">
+    <div class="card-body food-diary-list">
+        <% recipesList.forEach(function(recipe){ %>
+            <div class="food-diary-element">
+                <h5 class="card-title"><%= recipe.name %> <%= moment(recipe.date).format('DD/MM/YYYY') %>
+                </h5>
+                    <p class="card-text">
+                      <%= recipe.description %> <br>Tags: <%= recipe.tag %>  </p>
+            </div>
+                <% }); %>
+    </div>
+</div>
