@@ -19,6 +19,7 @@ var usersRouter = require('./routes/users')
 var foodRouter = require('./routes/food')
 var foodDiaryRouter = require('./routes/food-diary')
 var weightRouter = require('./routes/weight')
+var recipesRouter = require('./routes/recipes')
 
 var app = express()
 
@@ -70,6 +71,7 @@ app.use('/users', usersRouter)
 app.use('/food', foodRouter)
 app.use('/food-diary', foodDiaryRouter)
 app.use('/weight', weightRouter)
+app.use('/recipes', recipesRouter)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
