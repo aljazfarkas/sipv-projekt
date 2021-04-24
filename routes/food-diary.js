@@ -24,14 +24,17 @@ router.get('/list', ensureAuthenticated, async function (req, res) {
       }
       diaryEntries.push({
         date: diary_entry.date,
+        type: diary_entry.type,
         foods: foodArray
       })
     }
+    var _ = require('lodash');
     var moment = require('moment')
     res.render('food-diary-list', {
       date: user.food_diary.date,
       diary_entries: diaryEntries,
-      moment: moment
+      moment: moment, //momentjs lib
+      _: _, //lodash lib
     })
   })
 })

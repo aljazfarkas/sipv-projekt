@@ -2,6 +2,9 @@ var express = require('express')
 var router = express.Router()
 const { ensureAuthenticated } = require('../config/auth.js')
 const Weight = require('../models/weight')
+const User = require('../models/user')
+const Food = require('../models/food')
+const FoodDiaryEntry = require('../models/food_diary_entry')
 let moment = require('moment');
 
 //login page
@@ -19,7 +22,24 @@ router.get('/register', (req, res) => {
 })
 
 //dashboard
-router.get('/dashboard', ensureAuthenticated, (req, res) => {
+router.get('/dashboard', ensureAuthenticated, async function(req, res) {
+  //dobim dnevne kalorije
+  var daily_calories = 0
+  var query = { email: req.user.email }
+  let user = await User.findOne(query).exec()
+  for (let i = 0; i < user.food_diary.length; i++) {
+    entry_id = user.food_diary[i]
+    let diary_entry = await FoodDiaryEntry.findOne({ _id: entry_id }).exec()
+    //če ima entry današnji datum
+    if(moment(diary_entry.date).format('DD/MM/YYYY') == moment().format('DD/MM/YYYY')){
+      for (let j = 0; j < diary_entry.info.length; j++) {
+        let food_id = diary_entry.info[j].food_id
+        let food = await Food.findOne({ _id: food_id }).exec()
+        daily_calories += food['calories']
+      }
+    }
+  }
+
   Weight.find({ user: req.user.id })
     .then((weightList) => {
       let weightDifference  = 0, currentWeight = 0, previousWeight = 0;
@@ -69,9 +89,8 @@ router.get('/dashboard', ensureAuthenticated, (req, res) => {
       }
 
       let beginAt = (Math.min(minWeight - 5, req.user.goalWeight - 5)).toFixed(2);
-      console.log(beginAt)
       let endAt = (Math.max(maxWeight + 5, req.user.goalWeight + 5)).toFixed(2);
-      res.render('dashboard', { weightList: newWeightList, weightDifference, currentWeight, previousWeight, goalWeightList, beginAt, endAt })
+      res.render('dashboard', { weightList: newWeightList, weightDifference, currentWeight, previousWeight, goalWeightList, beginAt, endAt, daily_calories })
     })
 })
 

@@ -1,4 +1,10 @@
-<a href="/food/list">Back to food list</a>
+<script>
+    function goBack() {
+      window.history.back();
+    }
+</script>
+
+<a onclick="goBack()" class="previous">← Back</a>
 
 <h2>Food info: <%= food.name %> - <%= food.weight %>g</h2>
 

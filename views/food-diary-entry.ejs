@@ -39,7 +39,14 @@
         })
     })
   })
+
+function goBack() {
+  window.history.back();
+}
+
 </script>
+
+<a onclick="goBack()" class="previous">← Back</a>
 <div class="food-diary">
   <h1>Add today's diary entry</h1>
   <%- include ('./partials/messages') %>

@@ -1,3 +1,11 @@
+<script>
+    function goBack() {
+      window.history.back();
+    }
+</script>
+  
+<a onclick="goBack()" class="previous">← Back</a>
+  
 <h2>Add daily goal calories</h2>
 <%- include ('./partials/messages') %>
     <form action="/users/add-goal-calories" method="POST">

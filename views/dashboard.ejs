@@ -23,7 +23,7 @@
                             <div class=col>
                                 <h5 class="card-title"> <a href="/food-diary/list">Food diary list</a></h5>
                                 <p class="card-text">Your daily calories:
-                                    daily kcal /<a href="/users/add-goal-calories">
+                                    <%- daily_calories %> kcal /<a href="/users/add-goal-calories">
                                         <%if (user.goalCalories==null) { %>
                                             <b>goal</b>
                                             <% } else { %>

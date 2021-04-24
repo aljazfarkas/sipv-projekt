@@ -1,17 +1,94 @@
+<script>
+    function goBack() {
+      window.history.back();
+    }
+</script>
+  
+<a onclick="goBack()" class="previous">← Back</a>
 <h2>Food diary list</h2>
 
-<div class="card w-50">
-    <div class="card-body food-diary-list">
-        <% diary_entries.forEach(function(entry){ %>
-            <div class="food-diary-element">
-                <h5 class="card-title">Date: <%= moment(entry.date).format('DD/MM/YYYY') %>
-                </h5>
-                <% entry.foods.forEach(function(food){ %>
-                    <p class="card-text"><a href="<%= food.food.name %>-<%= food.food.weight %>">
-                            <%= food.quantity %>x <%= food.food.name %> (<%= food.food.weight %> g)
-                        </a></p>
+<% 
+//združimo vnose po istem datumu
+const grouped_dates = _.groupBy(diary_entries, function(entry){
+    return moment(entry.date).format('DD/MM/YYYY')
+});
+%> 
+
+<div>
+    <div class="container">
+        <% for (const [key, value] of Object.entries(grouped_dates)){ 
+            %>
+            <div class="row">
+                <h5>Date: <%= key %></h5>
+                <%
+                //združimo obroke po tipih
+                const grouped_types = _.groupBy(value, function(meal){
+                    return meal.type
+                })
+                var total_day_calories = 0
+                %>
+                <div class="breakfast col-sm">
+                    <h3>Breakfast</h3>
+                    <% if (typeof grouped_types['breakfast'] !== 'undefined'){ 
+                        grouped_types['breakfast'].forEach(meal => { 
+                            meal['foods'].forEach(info => {
+                                total_day_calories += info.food.calories
+                                %>
+                                <p><a href="/food/<%= info.food.name %>-<%= info.food.weight %>">
+                                    <%= info.quantity %>x <%= info.food.name %> (<%= info.food.weight %> g)
+                                </a></p>
+                                <% 
+                            })
+                        }) 
+                    } %>
+                </div>
+                <div class="lunch col-sm">
+                    <h3>Lunch</h3>
+                    <% if (typeof grouped_types['lunch'] !== 'undefined'){ 
+                        grouped_types['lunch'].forEach(meal => { 
+                            meal['foods'].forEach(info => {
+                                total_day_calories += info.food.calories
+                                %>
+                                <p><a href="/food/<%= info.food.name %>-<%= info.food.weight %>">
+                                    <%= info.quantity %>x <%= info.food.name %> (<%= info.food.weight %> g)
+                                </a></p>
+                                <% 
+                            })
+                        }) 
+                } %>    
+                </div>
+                <div class="dinner col-sm">
+                    <h3>Dinner</h3>
+                    <% if (typeof grouped_types['dinner'] !== 'undefined'){ 
+                        grouped_types['dinner'].forEach(meal => { 
+                            meal['foods'].forEach(info => {
+                                total_day_calories += info.food.calories
+                                %>
+                                <p><a href="/food/<%= info.food.name %>-<%= info.food.weight %>">
+                                    <%= info.quantity %>x <%= info.food.name %> (<%= info.food.weight %> g)
+                                </a></p>
+                                <% 
+                            })
+                        }) 
+                    }%>    
+                </div>
+                <div class="meal col-sm">
+                    <h3>Meals</h3>
+                    <% if (typeof grouped_types['meal'] !== 'undefined'){ 
+                        grouped_types['meal'].forEach(meal => { 
+                            meal['foods'].forEach(info => {
+                                total_day_calories += info.food.calories    
+                                %>
+                                <p><a href="/food/<%= info.food.name %>-<%= info.food.weight %>">
+                                    <%= info.quantity %>x <%= info.food.name %> (<%= info.food.weight %> g)
+                                </a></p>
+                                <% 
+                            })
+                        })
+                    }%>    
+                </div>
+                <h5>Total day calories: <%- total_day_calories %> kcal</h4>
             </div>
-            <% }) %>
-                <% }); %>
+         <% }; %>
     </div>
 </div>

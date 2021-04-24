@@ -1,3 +1,11 @@
+<script>
+  function goBack() {
+    window.history.back();
+  }
+</script>
+
+<a onclick="goBack()" class="previous">← Back</a>
+
 <h1>Add food</h1>
 <%- include ('./partials/messages') %>
   <form action="/food/add" method="POST" class="form-inline" role="form">

@@ -1,4 +1,11 @@
 <h2>Add weight</h2>
+<script>
+    function goBack() {
+      window.history.back();
+    }
+</script>
+  
+<a onclick="goBack()" class="previous">← Back</a>
 <%- include ('./partials/messages') %>
     <form action="<%= action %>" method="POST">
         <div>
