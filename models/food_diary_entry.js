@@ -5,6 +5,7 @@ const FoodDiaryEntrySchema = new mongoose.Schema({
     type: Date,
     default: Date.now
   },
+  type: String,
   info: [
     {
       food_id: {

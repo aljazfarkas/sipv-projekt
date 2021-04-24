@@ -5,7 +5,6 @@ var cookieParser = require('cookie-parser')
 var lessMiddleware = require('less-middleware')
 var logger = require('morgan')
 var cors = require('cors')
-var moment = require('moment');
 const mongoose = require('mongoose')
 const expressEjsLayout = require('express-ejs-layouts')
 const session = require('express-session')
@@ -18,8 +17,8 @@ require('dotenv').config()
 var indexRouter = require('./routes/index')
 var usersRouter = require('./routes/users')
 var foodRouter = require('./routes/food')
+var foodDiaryRouter = require('./routes/food-diary')
 var weightRouter = require('./routes/weight')
-var recipesRouter = require('./routes/recipes')
 
 var app = express()
 
@@ -44,7 +43,6 @@ app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(lessMiddleware(path.join(__dirname, 'public')))
 app.use(express.static(path.join(__dirname, 'public')))
-app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cors())
 //express session
@@ -70,8 +68,8 @@ app.use((req, res, next) => {
 app.use('/', indexRouter)
 app.use('/users', usersRouter)
 app.use('/food', foodRouter)
+app.use('/food-diary', foodDiaryRouter)
 app.use('/weight', weightRouter)
-app.use('/recipes', recipesRouter)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

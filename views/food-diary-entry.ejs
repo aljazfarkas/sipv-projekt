@@ -40,13 +40,20 @@
     })
   })
 </script>
-<a href="/dashboard">Back to dashboard</a>
 <div class="food-diary">
-  <h1>Add food</h1>
+  <h1>Add today's diary entry</h1>
   <%- include ('./partials/messages') %>
   <button class="btn btn-success btn-block" id="add">+</button>
   <button class="btn btn-danger btn-block" id="remove">-</button>
-  <form action="/users/food-diary-entry" method="POST">
+  <form action="/food-diary/add" method="POST">
+    <label for="type">Type of entry:</label>
+    <select name="type">
+      <option value="breakfast">Breakfast</option>
+      <option value="lunch">Lunch</option>
+      <option value="dinner">Dinner</option>
+      <option value="meal">Meal</option>
+    </select>
+    <p></p>
     <div class="entry"></div>
     <div>
       <button type="submit" class="btn btn-primary btn-block">Submit</button>
