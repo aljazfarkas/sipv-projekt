@@ -16,7 +16,7 @@
           <select class="operator" name="names" required>
             <% foods.forEach(food => { %>
             <option value="<%= food._id %>">
-              <%= food.name %> <%= food.weight %>g
+              <%= food.name %> <%= food.quantity %> <%= food.quantity_type %>
             </option>
             <% }) %>
           </select>

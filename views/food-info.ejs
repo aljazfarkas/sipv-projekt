@@ -6,9 +6,8 @@
 
 <a onclick="goBack()" class="previous">← Back</a>
 
-<h2>Food info: <%= food.name %> - <%= food.weight %>g</h2>
-
-<p>Calories: <%= food.calories %> g</p>
+<h2>Food info: <%= food.name %> - <%= food.quantity %> <%= food.quantity_type %></h2>
+<p>Calories: <%= food.calories %> kcal</p>
 <p>Saturated fat: <%= food.total_fat.saturated %> g</p>
 <p>Polyunsaturated fat: <%= food.total_fat.polyunsaturated %> g</p>
 <p>Monounsaturated fat: <%= food.total_fat.monounsaturated %> g</p>

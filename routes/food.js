@@ -4,7 +4,7 @@ const { ensureAuthenticated } = require('../config/auth.js')
 const Food = require('../models/food')
 
 //food list
-router.get('/list', (req, res) => {
+router.get('/list', ensureAuthenticated, (req, res) => {
   Food.find({}, function (err, foods) {
     res.render('food-list', {
       foods: foods
@@ -18,7 +18,7 @@ router.get('/add', ensureAuthenticated, (req, res) => {
 })
 
 //particular food
-router.get('/:id', (req, res) => {
+router.get('/:id', ensureAuthenticated, (req, res) => {
   const { id } = req.params
   Food.findOne({ _id: id }, function (err, food) {
     res.render('food-info', {
@@ -31,6 +31,8 @@ router.get('/:id', (req, res) => {
 router.post('/add', ensureAuthenticated, (req, res) => {
   const {
     name,
+    quantity_type,
+    quantity,
     weight,
     calories,
     saturated,
@@ -56,7 +58,8 @@ router.post('/add', ensureAuthenticated, (req, res) => {
     } else {
       const newFood = new Food({
         name: name,
-        weight: weight,
+        quantity_type: quantity_type,
+        quantity: quantity,
         calories: calories,
         total_fat: {
           saturated: saturated,

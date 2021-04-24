@@ -4,9 +4,14 @@ const FoodSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  //v g  
-  weight: {
-      type: Number
+  quantity_type: {
+    type: String,
+    required: true
+  },
+  //v "quantity_type"
+  quantity: {
+      type: Number,
+      required: true
   },
   //v kcal
   calories: {
