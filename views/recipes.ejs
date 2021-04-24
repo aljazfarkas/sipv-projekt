@@ -1,0 +1,69 @@
+<a href="/dashboard">Back to dashboard</a>
+
+<h2>Add recipe</h2>
+<form action="/recipes/add" method="POST">
+    <input type="hidden" name="dietCategory" value="<%= dietCategory %>">
+    <div>
+        <label>Name:</label>
+        <input name="recipeName" placeholder="Name of the recipe" />
+    </div>
+    <div>
+        <label>Description:</label>
+        <textarea name="recipeDescription" placeholder="Description of the recipe"></textarea>
+    </div>
+    <div class="checkbox-dish-category">
+        <div class="checkbox-dish-category-group">
+            <input type="checkbox" id="meat" name="recipeTag" value="meat">
+            <label for="meat">Meat</label>
+        </div>
+        <div class="checkbox-dish-category-group">
+            <input type="checkbox" id="vegetables" name="recipeTag" value="vegetables">
+            <label for="vegetables">Vegetables</label>
+        </div>
+        <div class="checkbox-dish-category-group">
+            <input type="checkbox" id="pasta" name="recipeTag" value="pasta">
+            <label for="pasta">Pasta and wheat</label>
+        </div>
+        <div class="checkbox-dish-category-group">
+            <input type="checkbox" id="fish" name="recipeTag" value="fish">
+            <label for="fish">Fish and seafood</label>
+        </div>
+        <div class="checkbox-dish-category-group">
+            <input type="checkbox" id="soup" name="recipeTag" value="soup">
+            <label for="soup">Soup</label>
+        </div>
+        <div class="checkbox-dish-category-group">
+            <input type="checkbox" id="eggs" name="recipeTag" value="eggs">
+            <label for="eggs">Eggs</label>
+        </div>
+        <div class="checkbox-dish-category-group">
+            <input type="checkbox" id="salads" name="recipeTag" value="salads">
+            <label for="salads">Salads</label>
+        </div>
+        <div class="checkbox-dish-category-group">
+            <input type="checkbox" id="deserts" name="recipeTag" value="deserts">
+            <label for="deserts">Deserts and pastries</label>
+        </div>
+        <div class="checkbox-dish-category-group">
+            <input type="checkbox" id="sauces" name="recipeTag" value="sauces">
+            <label for="sauces">Sauces</label>
+        </div>
+        <div class="checkbox-dish-category-group">
+            <input type="checkbox" id="spreads" name="recipeTag" value="spreads">
+            <label for="spreads">Spreads</label>
+        </div>
+        <div class="checkbox-dish-category-group">
+            <input type="checkbox" id="main-dish" name="recipeTag" value="main-dish">
+            <label for="main-dish">Main dish</label>
+        </div>
+        <div class="checkbox-dish-category-group">
+            <input type="checkbox" id="appetizers" name="recipeTag" value="appetizers">
+            <label for="appetizers">Appetizers and snacks</label>
+        </div>
+        <div class="checkbox-dish-category-group">
+            <input type="checkbox" id="side-dish" name="recipeTag" value="side-dish">
+            <label for="side-dish">Side dish</label>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary btn-block">Add recipe</button>
+</form>
