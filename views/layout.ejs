@@ -24,7 +24,6 @@
         <ul class="nav nav-pills pull-left">
           <li> <img class="navigation-left" src="/unnamed.png" alt="logo" width="35" height="35" style="background-color: white; border-radius: 10%;"/> </li>
           <li><a href="/dashboard" class="navigation-left" style="margin-right: 8px;">FatNoMoreInator™</a></li>
-          <li><a href="/recipes" class="navigation-left recipes" style="margin-right: 4px;">Recipes</a></li>
           <li><p class="navigation-left">Welcome <%= user.name %></p></li>
         </ul>
         <ul class="nav nav-pills pull-right">
@@ -32,8 +31,8 @@
             <input class="navigation-right" type="hidden" id="currentuser" value="<%- user.username %>">
             <li class="navigation-right" role="presentation">
               <form class="inline-form" action="/search/" method="GET">
-                <input type="text" name="search" required/>
-                <button  type="submit" class="fa fa-search"></button>
+                <input type="text" name="search" class="controls" required/>
+                <button  type="submit" class="fa fa-search btn btn-primary"></button>
               </form>
             </li>
             <li>
@@ -58,6 +57,7 @@
               </div>
 
             </li>
+            <li><a href="/recipes" class="navigation-right recipes btn btn-primary" style="margin-right: 4px;">Recipes</a></li>
             <li role="presentation"><a href="/users/logout" class="btn btn-secondary navigation-right">Logout</a></li>
               
         </ul>
