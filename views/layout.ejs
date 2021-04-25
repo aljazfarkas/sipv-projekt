@@ -30,9 +30,13 @@
         <ul class="nav nav-pills pull-right">
           
             <input class="navigation-right" type="hidden" id="currentuser" value="<%- user.username %>">
-            <li class="navigation-right" role="presentation"><a href="/search">Search <i class="fa fa-search"></i> </a></li>
+            <li class="navigation-right" role="presentation">
+              <form class="inline-form" action="/search/" method="GET">
+                <input type="text" name="search" required/>
+                <button  type="submit" class="fa fa-search"></button>
+              </form>
+            </li>
             <li>
-              
               <div class="dropdown">
                 <!---->
                 <button class="btn btn-primary dropdown-toggle navigation-right" type="button" data-toggle="dropdown"><i class="fa
