@@ -5,7 +5,7 @@ const { ensureAuthenticated } = require('../config/auth')
 
 router.get('/', ensureAuthenticated, async (req, res) => {
     let searching = req.query.search
-    const recipesList = await Recipe.find({ name: { $regex: '.*' + searching + '.*'}}).exec()
+    const recipesList = await Recipe.find({ $or: [ {name: { $regex: '.*' + searching + '.*'}},{tag: { $regex: '.*' + searching + '.*'}}]}).exec()
     const moment = require('moment')
     res.render('search', {searching, recipesList, moment})
 })
