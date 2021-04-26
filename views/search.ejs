@@ -1,15 +1,17 @@
-<h4>Results for: <%- searching %></h4>
-<% recipesList.forEach(recipe =>{ %>
-    <div class="food-diary-element">
-        <h5 class="card-title">
-            <%= recipe.name %>
-                <%= moment(recipe.date).format('DD/MM/YYYY') %>
-                    <%if (recipe.user===user) {%>
-                        <a href="#" class="delete-button" id="<%= recipe._id %>">Delete</a>
-                        <% } %>
-        </h5>
-        <p class="card-text">
-            <%= recipe.description %> <br>Tags: <%= recipe.tag %>
-        </p>
-    </div>
-<% }) %>
+<div class="content">
+    <h4>Results for: <%- searching %></h4>
+    <% recipesList.forEach(recipe =>{ %>
+        <div class="food-diary-element">
+            <h5 class="card-title">
+                <%= recipe.name %>
+                    <%= moment(recipe.date).format('DD/MM/YYYY') %>
+                        <%if (recipe.user===user) {%>
+                            <a href="#" class="delete-button" id="<%= recipe._id %>">Delete</a>
+                            <% } %>
+            </h5>
+            <p class="card-text">
+                <%= recipe.description %> <br>Tags: <%= recipe.tag %>
+            </p>
+        </div>
+    <% }) %>
+</div>
