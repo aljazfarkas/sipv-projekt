@@ -1,0 +1,97 @@
+<div class="row">
+    <div class="card">
+        <div class="card-body">
+            <div class="row dashboard-row">
+                <div class=col-md-auto>
+                    <h5 class="card-title"><a href="/users/add-goal-weight">Goal weight</a>
+                        <%= user.goalWeight %> kg
+                    </h5>
+                    <p class="card-text">Current weight is <%= currentWeight.weight %> kg.
+                            You are
+                            <%if (weightDifference> 0) { %>
+                                <%= weightDifference %>
+                                    kg heavier than last time (<%= previousWeight.weight %> kg)
+                                        <% } else if (weightDifference < 0) { %>
+                                            <%= weightDifference %>
+                                                kg lighter than last time (<%= previousWeight.weight %> kg)
+                                                    <% } else { %>
+                                                        the same weight as last time.
+                                                        <% } %>
+                    </p>
+                    <p class="card-text">keep track of your weight and what your goal weight is</p>
+                </div>
+               
+                <div class="col-md-auto">
+                    <a
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row dashboard-row weight-chart">
+    <canvas id="weightChart"></canvas>
+</div>
+</div>
+</div>
+
+
+
+<script>
+//Chart.defaults.global = { defaultFontColor: 'dodgerblue'};
+let weightList = '<%- JSON.stringify(weightList) %>';
+let goalWeightList = '<%- JSON.stringify(goalWeightList) %>';
+let beginAt = <%- JSON.stringify(beginAt) %>;
+let endAt = <%- JSON.stringify(endAt) %>;
+
+Chart.defaults.color = "#ededed";
+let ctx = document.getElementById('weightChart').getContext('2d');
+let weightChart = new Chart(ctx, {
+type: 'line',
+options: {
+    scales: {
+        x: {
+            ticks: {
+                source: 'data',
+                color: '#ededed',
+            },
+            grid: {
+                color: '#ededed'
+            }
+        },
+
+        y: {
+            min: parseFloat(beginAt),
+            max: parseFloat(endAt),
+            beginAtZero: false,
+            grid: {
+                color: '#ededed'
+            },
+            ticks: {
+                color: '#ededed'
+            }
+        }
+    },
+    parsing: {
+        xAxisKey: 'date',
+        yAxisKey: 'weight'
+    }
+},
+data: {
+    datasets: [
+        {
+            label: 'Weight (kg)',
+            data: JSON.parse(weightList),
+            borderColor: 'rgb(75, 192, 192)',
+            tension: 0.5,
+        },
+        {
+            label: 'Goal weight (kg)',
+            data: JSON.parse(goalWeightList),
+            borderColor: 'rgb(13, 109, 253)',
+            tension: 0.5,
+            borderDash: [10, 5]
+        }
+    ]
+}
+})
+</script>
