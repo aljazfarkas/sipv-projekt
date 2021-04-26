@@ -46,24 +46,33 @@ function goBack() {
 
 </script>
 
-<a onclick="goBack()" class="previous">← Back</a>
-<div class="food-diary">
-  <h1>Add today's diary entry</h1>
-  <%- include ('./partials/messages') %>
-  <button class="btn btn-success btn-block" id="add">+</button>
-  <button class="btn btn-danger btn-block" id="remove">-</button>
-  <form action="/food-diary/add" method="POST">
-    <label for="type">Type of entry:</label>
-    <select name="type">
+
+
+
+<%- include ('./partials/messages'); %>
+<div class="row mt-5">
+  <div class="col-md-6 m-auto">
+    <div class="card card-body">
+      <h1 class="text-center mb-3">
+        <i class="fa fa-plus"></i> add today's diary entry
+      </h1>
+    <p class="card-text">
+          <button class="fa fa-plus btn btn-success" id="add"></button>
+          <button class="fa fa-minus btn btn-danger" id="remove"></button>
+    </p>
+      <form action="/food-diary/add" method="POST" class="form-inline" role="form">
+        <div class="form-group">
+          <label for="type">Type of entry:</label>
+    <select name="type" class="form-control">
+      <option value="meal">Meal</option>
       <option value="breakfast">Breakfast</option>
       <option value="lunch">Lunch</option>
       <option value="dinner">Dinner</option>
-      <option value="meal">Meal</option>
     </select>
-    <p></p>
+    </div>
     <div class="entry"></div>
     <div>
       <button type="submit" class="btn btn-primary btn-block">Submit</button>
     </div>
   </form>
-</div>
+  </div>

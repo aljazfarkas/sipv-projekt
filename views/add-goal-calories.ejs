@@ -4,14 +4,28 @@
     }
 </script>
   
-<a onclick="goBack()" class="previous">← Back</a>
-  
-<h2>Add daily goal calories</h2>
-<%- include ('./partials/messages') %>
-    <form action="/users/add-goal-calories" method="POST">
-        <div>
-            <label for="calories">Calories:</label>
-            <input name="calories" placeholder="Enter calories (in kcal)"/>
+<div id="dashboard-container" class="container">
+    <div class="row align-items-start">
+        <div class="row">
+            <div class="card">
+                <div class="card-body">
+                    <%- include ('./partials/messages') %>
+                    <div class="row dashboard-row">
+                        <div class=col-md-auto>
+                            <h2 class="card-title">Add daily goal calories</h2>
+                             <%- include ('./partials/messages') %>
+                             <p class="card-text">
+                                <form action="/users/add-goal-calories" method="POST">
+                                    <label for="weight">calories: </label>
+                                    <input name="calories" placeholder="in kcal"/>
+                                    <button type="submit" class="weight-button">Add goal</button>
+                                    <a onclick="goBack()" class="weight-back-button">← Back</a>
+                                </form> 
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <button type="submit" class="btn btn-primary btn-block">Add calories</button>
-    </form>
+    </div>
+</div>

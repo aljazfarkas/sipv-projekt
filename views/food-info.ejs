@@ -1,25 +1,44 @@
 <script>
-    function goBack() {
-      window.history.back();
-    }
+  function goBack() {
+    window.history.back();
+  }
 </script>
 
-<a onclick="goBack()" class="previous">← Back</a>
+<%- include ('./partials/messages'); %>
+  <div id="dashboard-container" class="container">
+      <div class="row align-items-center">
+          <div class="row">
+              <div class="card">
+                  <div class="card-body">
+                      <div class="row dashboard-row">
+                          <div class="col-11">
+                              <h2 class="card-title">Food info: <%= food.name %> - <%= food.quantity %> <%= food.quantity_type %></h2>
+                              <p class="card-text"><a onclick="goBack()" class="food-back-button">← Back</a></p>
+                          </div>
+                          <div class="col-11">
+                              <p class="card-text"><ul>
+                                <li class="food-list-item">Calories: <%= food.calories %> kcal</li>
+                                <li class="food-list-item">Saturated fat: <%= food.total_fat.saturated %> g</li>
+                                <li class="food-list-item">Polyunsaturated fat: <%= food.total_fat.polyunsaturated %> g</li>
+                                <li class="food-list-item">Monounsaturated fat: <%= food.total_fat.monounsaturated %> g</li>
+                                <li class="food-list-item">Trans fat: <%= food.total_fat.trans %> g</li>
+                                <li class="food-list-item">Cholesterol: <%= food.cholesterol %> mg</li>
+                                <li class="food-list-item">Sodium: <%= food.sodium %> mg</li>
+                                <li class="food-list-item">Potassium: <%= food.potassium %> mg</li>
+                                <li class="food-list-item">Total carbs: <%= food.total_carbs %> g</li>
+                                <li class="food-list-item">Dietary fiber: <%= food.dietary_fiber %> g</li>
+                                <li class="food-list-item">Sugars: <%= food.sugars %> g</li>
+                                <li class="food-list-item">Protein: <%= food.protein %> g</li>
+                                <li class="food-list-item">Vitamin A: <%= food.vitamin_a %>% daily</li>
+                                <li class="food-list-item">Vitamin C: <%= food.vitamin_c %>% daily</li>
+                                <li class="food-list-item">Calcium: <%= food.calcium %>% daily</li>
+                                <li class="food-list-item">Iron: <%= food.iron %>% daily</li>
+                                  </ul></p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
 
-<h2>Food info: <%= food.name %> - <%= food.quantity %> <%= food.quantity_type %></h2>
-<p>Calories: <%= food.calories %> kcal</p>
-<p>Saturated fat: <%= food.total_fat.saturated %> g</p>
-<p>Polyunsaturated fat: <%= food.total_fat.polyunsaturated %> g</p>
-<p>Monounsaturated fat: <%= food.total_fat.monounsaturated %> g</p>
-<p>Trans fat: <%= food.total_fat.trans %> g</p>
-<p>Cholesterol: <%= food.cholesterol %> mg</p>
-<p>Sodium: <%= food.sodium %> mg</p>
-<p>Potassium: <%= food.potassium %> mg</p>
-<p>Total carbs: <%= food.total_carbs %> g</p>
-<p>Dietary fiber: <%= food.dietary_fiber %> g</p>
-<p>Sugars: <%= food.sugars %> g</p>
-<p>Protein: <%= food.protein %> g</p>
-<p>Vitamin A: <%= food.vitamin_a %>% daily</p>
-<p>Vitamin C: <%= food.vitamin_c %>% daily</p>
-<p>Calcium: <%= food.calcium %>% daily</p>
-<p>Iron: <%= food.iron %>% daily</p>

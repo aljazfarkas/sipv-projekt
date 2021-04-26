@@ -11,18 +11,29 @@ h1,
 h2,
 h3,
 h4,
-h5,
-a,
 p,
 label,
 pre {
   color: #f7f7f7;
 }
 
+a {
+  color: #88b2f0;
+}
+
 li {
-  //border-bottom: 1px solid lightgray;
+  
   margin: 3px;
-  //line-height: 38px;
+  line-height: 38px;
+}
+
+.food-list-item {
+  color: #f7f7f7;
+  border-bottom: 1px solid #2f3744;
+  line-height: 38px;
+  list-style-type: none;
+  position:static;
+  left: 0px;
 }
 
 .header.clearfix {
@@ -70,6 +81,16 @@ li {
 
 .fa.fa-search {
   margin-right: 10px;
+  background-color: #0d6dfd;
+  color: #ffffff;
+  padding: 10px 14px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  margin: auto;
+  opacity: 0.9;
+  border-radius: 5px;
+  border-color: #0d6dfd;
 }
 form {
   width: 100%;
@@ -102,6 +123,7 @@ label {
   font-size: 25px;
   align-content: left;
   width: 850px;
+
 }
 
 .weight-chart {
@@ -122,11 +144,65 @@ a:link {
 }
 
 .dashboard-button {
-  width: 150px;
+  right: 0px;
+  position: absolute;
   display: inline-block;
+  
   background-color: #0d6dfd;
   color: #ffffff;
-  padding: 14px 25px;
+  padding: 10px 14px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  margin: auto;
+  opacity: 0.9;
+  border-radius: 5px;
+}
+
+.weight-button {
+  position: absolute;
+  right: 0px;
+  bottom: 0px; 
+  display: inline-block;
+
+  background-color: #0d6dfd;
+  color: #ffffff;
+  padding: 10px 14px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  margin: auto;
+  opacity: 0.9;
+  border-radius: 5px;
+  border-color: #0d6dfd;
+}
+
+.weight-back-button {
+  position: absolute;
+  right: 120px;
+  bottom: 0px; 
+  display: inline-block;
+  border-color: #0d6dfd;
+  background-color: #0d6dfd;
+  color: #ffffff;
+  padding: 10px 14px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  margin: auto;
+  opacity: 0.9;
+  border-radius: 5px;
+}
+
+.food-back-button {
+  position: absolute;
+  right: 120px;
+  top: 20px; 
+  display: inline-block;
+  border-color: #0d6dfd;
+  background-color: #0d6dfd;
+  color: #ffffff;
+  padding: 10px 14px;
   text-align: center;
   text-decoration: none;
   font-size: 16px;

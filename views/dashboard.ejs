@@ -5,12 +5,12 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="row dashboard-row">
-                            <div class=col>
+                            <div class=col-11>
                                 <h5 class="card-title"><a href="/food/list">Food list</a></h5>
-                                <p class="card-text">Add your food</p>
+                                <p class="card-text">add food you regulary consume to your own database, or look for it in a ever-growing collection of food </p>
                             </div>
-                            <div class=col>
-                                <a href="/food/add" class="dashboard-button">Add food</a>
+                            <div class=col-md-auto>
+                                <a href="/food/add" class="dashboard-button vertical-center">Add food</a>
                             </div>
                         </div>
                     </div>
@@ -20,7 +20,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="row dashboard-row">
-                            <div class=col>
+                            <div class=col-md-auto>
                                 <h5 class="card-title"> <a href="/food-diary/list">Food diary list</a></h5>
                                 <p class="card-text">Your daily calories:
                                     <%- daily_calories %> kcal /<a href="/users/add-goal-calories">
@@ -30,9 +30,10 @@
                                                 <%= user.goalCalories %>
                                                     <% } %>
                                     </a> kcal</p>
+                                    <p class="card-text">log what you ate today</p>
                             </div>
                             <div class=col>
-                                <a href="/food-diary/add" class="dashboard-button">Add to food diary</a>
+                                <a href="/food-diary/add" class="dashboard-button vertical-center">Add to food diary</a>
                             </div>
                         </div>
                     </div>
@@ -43,7 +44,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="row dashboard-row">
-                            <div class=col>
+                            <div class=col-md-auto>
                                 <h5 class="card-title"><a href="/users/add-goal-weight">Goal weight</a>
                                     <%= user.goalWeight %> kg
                                 </h5>
@@ -59,9 +60,11 @@
                                                                     the same weight as last time.
                                                                     <% } %>
                                 </p>
+                                <p class="card-text">keep track of your weight and what your goal weight is</p>
                             </div>
+                           
                             <div class=col>
-                                <a href="/weight/add" class="dashboard-button">Add weight</a>
+                                <a href="/weight/add" class="dashboard-button vertical-center">Weight in</a>
                             </div>
                         </div>
                     </div>
@@ -70,21 +73,21 @@
             <div class="row dashboard-row weight-chart">
                 <canvas id="weightChart"></canvas>
             </div>
-        </div>
-    </div>
-
-
-
-    <script>
-        //Chart.defaults.global = { defaultFontColor: 'dodgerblue'};
-        let weightList = '<%- JSON.stringify(weightList) %>';
-        let goalWeightList = '<%- JSON.stringify(goalWeightList) %>';
-        let beginAt = <%- JSON.stringify(beginAt) %>;
-        let endAt = <%- JSON.stringify(endAt) %>;
-
-        Chart.defaults.color = "#ededed";
-        let ctx = document.getElementById('weightChart').getContext('2d');
-        let weightChart = new Chart(ctx, {
+            </div>
+            </div>
+            
+            
+            
+            <script>
+            //Chart.defaults.global = { defaultFontColor: 'dodgerblue'};
+            let weightList = '<%- JSON.stringify(weightList) %>';
+            let goalWeightList = '<%- JSON.stringify(goalWeightList) %>';
+            let beginAt = <%- JSON.stringify(beginAt) %>;
+            let endAt = <%- JSON.stringify(endAt) %>;
+            
+            Chart.defaults.color = "#ededed";
+            let ctx = document.getElementById('weightChart').getContext('2d');
+            let weightChart = new Chart(ctx, {
             type: 'line',
             options: {
                 scales: {
@@ -97,7 +100,7 @@
                             color: '#ededed'
                         }
                     },
-
+            
                     y: {
                         min: parseFloat(beginAt),
                         max: parseFloat(endAt),
@@ -132,5 +135,5 @@
                     }
                 ]
             }
-        })
-    </script>
+            })
+            </script>
