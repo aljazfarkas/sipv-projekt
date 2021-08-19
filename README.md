@@ -1,6 +1,6 @@
 # FatNoMoreInator
 
-A simple clone of MyFitnesPal for managing food and food intake, made with ExpressJS. 
+A simple clone of MyFitnesPal for managing food and food intake, made with NodeJS. 
 
 Koraki za setup:
 
