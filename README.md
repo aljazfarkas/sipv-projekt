@@ -1,5 +1,7 @@
 # FatNoMoreInator
 
+A website, a simple clone of MyFitnesPal for managing food and food intake.
+
 Koraki za setup:
 
 1. npm i
